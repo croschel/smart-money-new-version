@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, TouchableOpacity, Alert } from 'react-native';
+import {View, TouchableOpacity, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { EntryObject } from '~/../declarations';
+import {EntryObject} from '~/../declarations';
 
 import colors from '~/styles/colors';
 import styles from './styles';
@@ -20,10 +20,10 @@ const NewEntryDeleteAction = ({
       'Apagar?',
       'Você deseja realmente apagar este lançamento?',
       [
-        { text: 'Não', style: 'cancel' },
-        { text: 'Sim', onPress: () => onOkPress() },
+        {text: 'Não', style: 'cancel'},
+        {text: 'Sim', onPress: () => onOkPress()},
       ],
-      { cancelable: false }
+      {cancelable: false},
     );
   };
 

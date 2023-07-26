@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { CategoryObject } from '~/../declarations';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {CategoryObject} from '~/../declarations';
 
 import CategoryModal from '~/components/CategoryModal';
 import styles from './styles';
@@ -31,8 +31,7 @@ const NewEntryCategory = ({
     <View>
       <TouchableOpacity
         style={styles.pickerButton}
-        onPress={() => setModalVisible(true)}
-      >
+        onPress={() => setModalVisible(true)}>
         <Text style={styles.pickerButtonText}>{category.name}</Text>
       </TouchableOpacity>
       <CategoryModal

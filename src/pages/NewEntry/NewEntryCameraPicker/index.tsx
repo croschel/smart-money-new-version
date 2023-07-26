@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, {useState} from 'react';
+import {View} from 'react-native';
 import ButtonIcon from '~/components/Core/ButtonIcon';
 import ModalCameraPicker from './ModalCameraPicker';
 

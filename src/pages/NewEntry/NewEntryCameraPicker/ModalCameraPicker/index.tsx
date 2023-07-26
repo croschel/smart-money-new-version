@@ -1,9 +1,7 @@
-/* eslint-disable react/forbid-prop-types */
-import React, { useState } from 'react';
-import { Modal, Alert, ImageBackground, View } from 'react-native';
-import { RNCamera, RNCameraProps } from 'react-native-camera';
+import React, {useState} from 'react';
+import {Modal, Alert, ImageBackground, View} from 'react-native';
+import {RNCamera, RNCameraProps} from 'react-native-camera';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import PropTypes from 'prop-types';
 import styles from './styles';
 import colors from '~/styles/colors';
 
@@ -26,7 +24,7 @@ const ModalCameraPicker = ({
 
   const onTakePicture = async () => {
     try {
-      const { uri } = await camera.takePictureAsync({
+      const {uri} = await camera.takePictureAsync({
         quality: 0.5,
         forceUpOrientation: true,
         fixOrientation: true,
@@ -36,7 +34,7 @@ const ModalCameraPicker = ({
     } catch (error) {
       console.error(
         'NewEntryCameraPickerModal :: onTakePicture error on take picture',
-        error
+        error,
       );
       Alert.alert('Erro', 'Houve um erro ao tirar a foto!');
     }
@@ -45,7 +43,7 @@ const ModalCameraPicker = ({
   return (
     <Modal transparent={false} animationType="slide" visible={isVisible}>
       {photo ? (
-        <ImageBackground style={styles.picturePreview} source={{ uri: photo }}>
+        <ImageBackground style={styles.picturePreview} source={{uri: photo}}>
           <View style={styles.pictureIconsBox}>
             <Icon
               name="delete"
@@ -65,7 +63,7 @@ const ModalCameraPicker = ({
         </ImageBackground>
       ) : (
         <RNCamera
-          ref={(ref) => {
+          ref={ref => {
             setCamera(ref);
           }}
           style={styles.cameraPreview}
@@ -78,8 +76,7 @@ const ModalCameraPicker = ({
             message: 'We need your permission to use your camera',
             buttonPositive: 'Ok',
             buttonNegative: 'Cancel',
-          }}
-        >
+          }}>
           <Icon
             name="photo-camera"
             size={40}
