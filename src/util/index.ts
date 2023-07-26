@@ -1,18 +1,18 @@
-import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
-import { format, subDays } from 'date-fns';
+import {FirebaseFirestoreTypes} from '@react-native-firebase/firestore';
+import {format, subDays} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 export const convertDateDetails = (parsedDate: Date) => {
-  const response = format(parsedDate, "dd'/'MM HH':'mm", { locale: pt });
+  const response = format(parsedDate, "dd'/'MM HH':'mm", {locale: pt});
 
   return response;
 };
 
 export const convertDateDetailsTimestamp = (
-  timestampDate: FirebaseFirestoreTypes.Timestamp
+  timestampDate: FirebaseFirestoreTypes.Timestamp,
 ) => {
   const dateFormatted = timestampDate.toDate();
-  const response = format(dateFormatted, "dd'/'MM HH':'mm", { locale: pt });
+  const response = format(dateFormatted, "dd'/'MM HH':'mm", {locale: pt});
 
   return response;
 };
