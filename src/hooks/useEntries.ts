@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { CategoryObject, EntryObject } from '~/../declarations';
+import {useEffect, useState} from 'react';
+import {CategoryObject, EntryObject} from '~/../declarations';
 import {
   getEntries,
   saveEntry,

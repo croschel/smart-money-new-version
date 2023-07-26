@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
-import { getBalanceSumByDate } from '~/services/Balance';
+import {getBalanceSumByDate} from '~/services/Balance';
 
 const useBalanceSumByDate = (days = 7) => {
   const [balanceSum, setBalanceSum] = useState<number[]>([]);
