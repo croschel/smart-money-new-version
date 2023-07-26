@@ -1,6 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
-import { BarChart } from 'react-native-svg-charts';
+import {View} from 'react-native';
+import {BarChart} from 'react-native-svg-charts';
 import useBalanceSumbyDate from '~/hooks/useBalanceSumbyDate';
 import styles from './styles';
 
@@ -18,7 +18,7 @@ const BalancePanelChart = () => {
         style={styles.chart}
         data={balanceSum}
         svg={svgAttributes}
-        contentInset={{ top: 0, bottom: 0 }}
+        contentInset={{top: 0, bottom: 0}}
       />
     </View>
   );
