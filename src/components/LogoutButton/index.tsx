@@ -1,16 +1,8 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {
-  NavigationActions,
-  NavigationScreenProp,
-  NavigationStackAction,
-  StackActions,
-} from 'react-navigation';
-import { NavigationStackState } from 'react-navigation-stack';
-import { cleanUserAuth } from '~/services/Auth';
 import colors from '~/styles/colors';
-import { styles } from './styles';
+import {styles} from './styles';
 
 interface LogoutButtonProps {
   position: 'topRight' | 'topLeft' | 'bottomLeft' | 'bottomRight';
@@ -18,7 +10,7 @@ interface LogoutButtonProps {
 }
 
 const LogoutButton = (props: LogoutButtonProps) => {
-  const { position, onPress } = props;
+  const {position, onPress} = props;
 
   const handlePosition = () => {
     let stylePosition;

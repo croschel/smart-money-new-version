@@ -1,15 +1,13 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import {View, FlatList} from 'react-native';
 import EntrySummaryListItem from './EntrySummaryListItem';
 // import styles from './styles';
 
 interface EntrySummaryListProps {
-  balance: [
-    {
-      amount: number;
-      category: CategoryObject;
-    }
-  ];
+  balance: {
+    amount: number;
+    category: CategoryObject;
+  }[];
 }
 
 interface CategoryObject {
@@ -24,14 +22,14 @@ interface CategoryObject {
 }
 
 const EntrySummaryList = (props: EntrySummaryListProps) => {
-  const { balance } = props;
+  const {balance} = props;
   // console.log('Balance EntrySummaryList :: ', balance);
   return (
     <View>
       <FlatList
         data={balance}
-        keyExtractor={(item) => item.category.id}
-        renderItem={({ item }) => <EntrySummaryListItem entry={item} />}
+        keyExtractor={item => item.category.id}
+        renderItem={({item}) => <EntrySummaryListItem entry={item} />}
       />
     </View>
   );

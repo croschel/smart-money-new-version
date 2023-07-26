@@ -1,21 +1,17 @@
-/* eslint-disable no-bitwise */
-/* eslint-disable implicit-arrow-linebreak */
 import React from 'react';
-import { View } from 'react-native';
-import { PieChart } from 'react-native-svg-charts';
+import {View} from 'react-native';
+import {PieChart} from 'react-native-svg-charts';
 
 import styles from './styles';
 
 interface EntrySummaryChartProps {
-  balance: [
-    {
-      amount: number;
-      category: CategoryObject;
-    }
-  ];
+  balance: {
+    amount: number;
+    category: CategoryObject;
+  }[];
 }
 
-interface CategoryObject {
+export interface CategoryObject {
   id: string;
   name: string;
   color: string;
@@ -27,9 +23,9 @@ interface CategoryObject {
 }
 
 const EntrySummaryChart = (props: EntrySummaryChartProps) => {
-  const { balance } = props;
+  const {balance} = props;
 
-  const chartData = balance.map(({ category, amount }) => ({
+  const chartData = balance.map(({category, amount}) => ({
     value: amount,
     svg: {
       fill: category.color,

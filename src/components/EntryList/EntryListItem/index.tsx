@@ -1,16 +1,11 @@
-/* eslint-disable object-curly-newline */
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Ball } from '~/resources/svg';
+import {Ball} from '~/resources/svg';
 import colors from '~/styles/colors';
 import styles from './styles';
-import {
-  convertDateDetails,
-  amountFormat,
-  convertDateDetailsTimestamp,
-} from '~/util';
-import { EntryObject } from '~/../declarations';
+import {amountFormat, convertDateDetailsTimestamp} from '~/util';
+import {EntryObject} from '~/../declarations';
 
 interface EntryListItemProps {
   entry: EntryObject;
@@ -20,8 +15,8 @@ interface EntryListItemProps {
 }
 
 const EntryListItem = (props: EntryListItemProps) => {
-  const { entry, isFirstItem, isLastItem, onEntryPress } = props;
-  const { address, category, description, entryAt } = entry;
+  const {entry, isFirstItem, isLastItem, onEntryPress} = props;
+  const {address, category, description, entryAt} = entry;
 
   const handleAddress = () => {
     if (address) {
@@ -34,8 +29,7 @@ const EntryListItem = (props: EntryListItemProps) => {
   return (
     <TouchableOpacity
       onPress={() => onEntryPress && onEntryPress(entry)}
-      style={styles.container}
-    >
+      style={styles.container}>
       <Ball
         isFirstItem={isFirstItem}
         isLastItem={isLastItem}

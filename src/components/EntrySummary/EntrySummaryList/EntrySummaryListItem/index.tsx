@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { CategoryObject } from '~/../declarations';
-import { BallWithouLine } from '~/resources/svg/';
-import { amountFormat } from '~/util';
+import {View, Text} from 'react-native';
+import {CategoryObject} from '~/../declarations';
+import {BallWithouLine} from '~/resources/svg/';
+import {amountFormat} from '~/util';
 import styles from './styles';
 
 interface EntrySummaryListItemProps {
@@ -13,7 +13,7 @@ interface EntrySummaryListItemProps {
 }
 
 const EntrySummaryListItem = (props: EntrySummaryListItemProps) => {
-  const { entry } = props;
+  const {entry} = props;
   return (
     <View style={styles.container}>
       <View style={styles.contentBox}>

@@ -2,7 +2,7 @@ import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
 
 import moment from '~/vendors/moment';
-import { getUserAuth } from './Auth';
+import {getUserAuth} from './Auth';
 
 export const getBalance = async (untilDay = 0) => {
   let querySnapshot;
@@ -49,21 +49,18 @@ export const getBalanceSumByDate = async (days: number) => {
       .get();
   }
 
-  let entries = querySnapshot.docs.map((documentSnapshot) =>
-    documentSnapshot.data()
+  let entries = querySnapshot.docs.map(documentSnapshot =>
+    documentSnapshot.data(),
   );
   // @ts-ignore
   entries = _(entries)
-    .groupBy(({ entryAt }) =>
-      // eslint-disable-next-line implicit-arrow-linebreak
-      moment(entryAt.toDate()).format('YYYYMMDD')
-    )
-    .map((entry) => _.sumBy(entry, 'amount'))
+    .groupBy(({entryAt}) => moment(entryAt.toDate()).format('YYYYMMDD'))
+    .map(entry => _.sumBy(entry, 'amount'))
     .map(
       (amount, index, collection) =>
         (index === 0 ? startBalance : 0) +
         _.sum(_.slice(collection, 0, index)) +
-        amount
+        amount,
     );
 
   return entries;
@@ -71,7 +68,7 @@ export const getBalanceSumByDate = async (days: number) => {
 
 export const getBalanceSumByCategory = async (
   days: number,
-  showOther = true
+  showOther = true,
 ) => {
   let querySnapshot;
   const uid = await getUserAuth();
@@ -92,17 +89,17 @@ export const getBalanceSumByCategory = async (
       .get();
   }
 
-  let entries = querySnapshot.docs.map((documentSnapshot) =>
-    documentSnapshot.data()
+  let entries = querySnapshot.docs.map(documentSnapshot =>
+    documentSnapshot.data(),
   );
   // @ts-ignore
   entries = _(entries)
-    .groupBy(({ category: { id } }) => id)
-    .map((entry) => ({
+    .groupBy(({category: {id}}) => id)
+    .map(entry => ({
       category: _.omit(entry[0].category, 'entries'),
       amount: Math.abs(_.sumBy(entry, 'amount')),
     }))
-    .filter(({ amount }) => amount > 0)
+    .filter(({amount}) => amount > 0)
     .orderBy('amount', 'desc');
 
   // console.log('getBalanceByCategories :: ', JSON.stringify(entries));

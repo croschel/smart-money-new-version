@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line object-curly-newline
-import { View, Text, Modal, FlatList, TouchableOpacity } from 'react-native';
+import React, {useEffect, useState} from 'react';
+
+import {View, Text, Modal, FlatList, TouchableOpacity} from 'react-native';
 import {
   ActionFooter,
   ActionPrimaryButton,
@@ -31,8 +31,7 @@ interface CategoryModalProps {
 }
 
 const CategoryModal = (props: CategoryModalProps) => {
-  // eslint-disable-next-line object-curly-newline
-  const { debit, filter, onSelectCategory, onClose, modalVisible } = props;
+  const {debit, filter, onSelectCategory, onClose, modalVisible} = props;
 
   const [categories, setCategories] = useState<CategoryObject[]>([]);
 
@@ -58,12 +57,11 @@ const CategoryModal = (props: CategoryModalProps) => {
         <FlatList
           data={categories}
           keyExtractor={(item: CategoryObject) => item.id}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => onSelectCategory(item)}
-              style={styles.modalItem}
-            >
-              <Text style={[styles.modalItemText, { color: item.color }]}>
+              style={styles.modalItem}>
+              <Text style={[styles.modalItemText, {color: item.color}]}>
                 {item.name}
               </Text>
             </TouchableOpacity>

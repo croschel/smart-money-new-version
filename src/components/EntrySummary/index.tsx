@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import {View} from 'react-native';
 import EntrySummaryList from './EntrySummaryList';
 import EntrySummaryChart from './EntrySummaryChart';
 import Container from '~/components/Core/Container';
@@ -12,7 +12,7 @@ interface EntrySummaryProps {
 }
 
 const EntrySummary = (props: EntrySummaryProps) => {
-  const { days = 7, onPressActionButton } = props;
+  const {days = 7, onPressActionButton} = props;
   const [balanceSum] = useBalanceSumByCategory(days);
   // console.log('balanceSum on Entry Summary :: ', balanceSum);
   return (
@@ -20,8 +20,8 @@ const EntrySummary = (props: EntrySummaryProps) => {
       title="Categorias"
       actionLabelText={`Últimos ${days} dias`}
       actionButtonText="Ver mais"
-      onPressActionButton={onPressActionButton}
-    >
+      // @ts-ignore TS-TODO
+      onPressActionButton={onPressActionButton}>
       <View style={styles.contentBox}>
         <EntrySummaryChart balance={balanceSum} />
         <EntrySummaryList balance={balanceSum} />

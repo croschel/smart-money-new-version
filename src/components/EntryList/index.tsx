@@ -1,9 +1,9 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import {FlatList} from 'react-native';
 import Container from '~/components/Core/Container';
 import EntryListItem from './EntryListItem';
 import useEntries from '~/hooks/useEntries';
-import { CategoryObject, EntryObject } from '~/../declarations';
+import {CategoryObject, EntryObject} from '~/../declarations';
 // import styles from './styles';
 
 interface EntryListItemProps {
@@ -14,8 +14,8 @@ interface EntryListItemProps {
 }
 
 const EntryList = (props: EntryListItemProps) => {
-  // eslint-disable-next-line object-curly-newline
-  const { onEntryPress, onPressActionButton, days = 7, category } = props;
+  const {onEntryPress, onPressActionButton, days = 7, category} = props;
+  // @ts-ignore TS-TODO
   const [entries, , ,] = useEntries(days, category);
 
   const checkBallFirstPosition = (index: number) => {
@@ -37,13 +37,12 @@ const EntryList = (props: EntryListItemProps) => {
       title="Últimos Lançamentos"
       actionLabelText={`Últimos ${days} dias`}
       actionButtonText="Ver mais"
-      onPressActionButton={onPressActionButton}
-    >
+      onPressActionButton={onPressActionButton}>
       <FlatList
         //@ts-ignore
         data={entries}
-        keyExtractor={(item: EntryObject) => item.id}
-        renderItem={({ item, index }) => (
+        keyExtractor={(item: EntryObject) => item.id as string}
+        renderItem={({item, index}) => (
           <EntryListItem
             entry={item}
             isFirstItem={checkBallFirstPosition(index)}
