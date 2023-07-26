@@ -12,6 +12,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1C965A452A70BB920063BB2E /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1C965A442A70BB920063BB2E /* Fonts */; };
 		7699B88040F8A987B510C191 /* libPods-NewSmartMoney-NewSmartMoneyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-NewSmartMoney-NewSmartMoneyTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = NewSmartMoney/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NewSmartMoney/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-NewSmartMoney-NewSmartMoneyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NewSmartMoney-NewSmartMoneyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C965A442A70BB920063BB2E /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-NewSmartMoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSmartMoney.debug.xcconfig"; path = "Target Support Files/Pods-NewSmartMoney/Pods-NewSmartMoney.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-NewSmartMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSmartMoney.release.xcconfig"; path = "Target Support Files/Pods-NewSmartMoney/Pods-NewSmartMoney.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-NewSmartMoney-NewSmartMoneyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSmartMoney-NewSmartMoneyTests.debug.xcconfig"; path = "Target Support Files/Pods-NewSmartMoney-NewSmartMoneyTests/Pods-NewSmartMoney-NewSmartMoneyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* NewSmartMoney */ = {
 			isa = PBXGroup;
 			children = (
+				1C965A442A70BB920063BB2E /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -242,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C965A452A70BB920063BB2E /* Fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
