@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   SafeAreaView,
@@ -18,10 +18,10 @@ import {
 } from '~/components/Core/ActionFooter';
 import colors from '~/styles/colors';
 import styles from './styles';
-import { formatSingleNumber } from '~/util';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
+import {formatSingleNumber} from '~/util';
+import {NavigationStackScreenProps} from 'react-navigation-stack';
 
-const Report = ({ navigation }: NavigationStackScreenProps) => {
+const Report = ({navigation}: NavigationStackScreenProps) => {
   const [showRelativeDaysModal, setShowRelativeDaysModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [relativeDays, setRelativeDays] = useState(7);
@@ -58,8 +58,7 @@ const Report = ({ navigation }: NavigationStackScreenProps) => {
       <View style={styles.filtersContainer}>
         <TouchableOpacity
           onPress={() => setShowRelativeDaysModal(true)}
-          style={styles.filterButton}
-        >
+          style={styles.filterButton}>
           <Text style={styles.filterButtonText}>
             {formatSingleNumber(relativeDays)}
           </Text>
@@ -71,8 +70,7 @@ const Report = ({ navigation }: NavigationStackScreenProps) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setShowCategoryModal()}
-          style={styles.filterButton}
-        >
+          style={styles.filterButton}>
           <Text style={styles.filterButtonText}>{category.name}</Text>
           <Icon
             name="keyboard-arrow-down"
@@ -94,7 +92,7 @@ const Report = ({ navigation }: NavigationStackScreenProps) => {
       <ScrollView>
         <EntrySummary days={relativeDays} />
         <EntryList
-          onEntryPress={(entry) => navigation.navigate('NewEntry', { entry })}
+          onEntryPress={entry => navigation.navigate('NewEntry', {entry})}
           days={relativeDays}
           category={category}
         />

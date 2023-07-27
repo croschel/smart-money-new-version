@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { NavigationActions, StackActions } from 'react-navigation';
+import React, {useState} from 'react';
+import {View} from 'react-native';
+import {NavigationActions, StackActions} from 'react-navigation';
 import BalanceLabel from '~/components/BalanceLabel';
 import NewEntryInput from './NewEntryInput';
 import NewEntryCategory from './NewEntryCategory';
@@ -15,9 +15,9 @@ import {
 } from '~/components/Core/ActionFooter';
 import useEntries from '~/hooks/useEntries';
 import styles from './styles';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
+import {NavigationStackScreenProps} from 'react-navigation-stack';
 
-const NewEntry = ({ navigation }: NavigationStackScreenProps) => {
+const NewEntry = ({navigation}: NavigationStackScreenProps) => {
   const [, saveEntry, updateEntry, deleteEntry] = useEntries();
 
   const entry = navigation.getParam('entry', {
@@ -36,11 +36,11 @@ const NewEntry = ({ navigation }: NavigationStackScreenProps) => {
   const isEdit = entry.id !== null;
   const [debit, setDebit] = useState(entry.amount <= 0);
   const [amount, setAmount] = useState(
-    `${parseFloat(entry.amount).toFixed(2)}`
+    `${parseFloat(entry.amount).toFixed(2)}`,
   );
   const [category, setCategory] = useState(entry.category);
   const [entryAt, setEntryAt] = useState(
-    isEdit ? entry.entryAt.toDate() : entry.entryAt
+    isEdit ? entry.entryAt.toDate() : entry.entryAt,
   );
   const [addressState, setAddressState] = useState(entry.address);
   const [photo, setPhoto] = useState(entry.photo);
@@ -58,8 +58,8 @@ const NewEntry = ({ navigation }: NavigationStackScreenProps) => {
     navigation.dispatch(
       StackActions.reset({
         index: 0,
-        actions: [NavigationActions.navigate({ routeName: 'Main' })],
-      })
+        actions: [NavigationActions.navigate({routeName: 'Main'})],
+      }),
     );
   };
 
@@ -91,7 +91,7 @@ const NewEntry = ({ navigation }: NavigationStackScreenProps) => {
       <View style={styles.formContainer}>
         <NewEntryInput
           value={amount}
-          onChangeValue={(value) => setAmount(value)}
+          onChangeValue={value => setAmount(value)}
           onChangeDebit={setDebit}
         />
         <NewEntryCategory
@@ -104,7 +104,7 @@ const NewEntry = ({ navigation }: NavigationStackScreenProps) => {
           <NewEntryDeleteAction onOkPress={onDelete} entry={entry} />
           <NewEntryGeoPicker
             address={addressState}
-            onChange={({ latitude, longitude, address }) => {
+            onChange={({latitude, longitude, address}) => {
               setLatitudeState(latitude);
               setLongitudeState(longitude);
               setAddressState(address);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   KeyboardAvoidingView,
   View,
@@ -9,19 +9,14 @@ import {
 } from 'react-native';
 import {
   NavigationActions,
-  NavigationParams,
   NavigationScreenProp,
   NavigationStackAction,
-  NavigationState,
   StackActions,
 } from 'react-navigation';
-import {
-  NavigationStackState,
-  StackNavigationProp,
-} from 'react-navigation-stack/lib/typescript/src/vendor/types';
+import {NavigationStackState} from 'react-navigation-stack/lib/typescript/src/vendor/types';
 // @ts-ignore
 import Logo from '~/assets/logo-money-huge.png';
-import { clientRegister } from '~/services/Auth';
+import {clientRegister} from '~/services/Auth';
 import colors from '~/styles/colors';
 import styles from './styles';
 
@@ -30,7 +25,7 @@ interface SignUpProps {
 }
 
 const SignUp = (props: SignUpProps) => {
-  const { navigation } = props;
+  const {navigation} = props;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,13 +40,13 @@ const SignUp = (props: SignUpProps) => {
         password,
         name,
       };
-      const { registerSuccess } = await clientRegister(data);
+      const {registerSuccess} = await clientRegister(data);
       if (registerSuccess) {
         navigation.dispatch(
           StackActions.reset({
             index: 0,
-            actions: [NavigationActions.navigate({ routeName: 'SignIn' })],
-          })
+            actions: [NavigationActions.navigate({routeName: 'SignIn'})],
+          }),
         );
       } else {
         setLoading(false);
@@ -71,7 +66,7 @@ const SignUp = (props: SignUpProps) => {
           autoCapitalize="none"
           autoCorrect={false}
           value={name}
-          onChangeText={(text) => setName(text)}
+          onChangeText={text => setName(text)}
         />
         <TextInput
           style={styles.input}
@@ -81,7 +76,7 @@ const SignUp = (props: SignUpProps) => {
           autoCapitalize="none"
           autoCorrect={false}
           value={email}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={text => setEmail(text)}
         />
         <TextInput
           style={styles.input}
@@ -91,23 +86,21 @@ const SignUp = (props: SignUpProps) => {
           autoCapitalize="none"
           autoCorrect={false}
           value={password}
-          onChangeText={(text) => setPassword(text)}
+          onChangeText={text => setPassword(text)}
         />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           disabled={loading ? true : false}
           onPress={onSubmit}
-          style={styles.signInButton}
-        >
+          style={styles.signInButton}>
           <Text style={styles.signInTextButton}>
             {loading ? 'Carregando' : 'Criar conta'}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('SignIn')}
-          style={styles.signUpButton}
-        >
+          style={styles.signUpButton}>
           <Text style={styles.signUpTextButton}>Já tenho uma conta</Text>
         </TouchableOpacity>
       </View>

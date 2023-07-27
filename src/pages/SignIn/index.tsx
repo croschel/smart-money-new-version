@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   KeyboardAvoidingView,
   View,
@@ -8,16 +8,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
-  NavigationActions,
   NavigationParams,
   NavigationScreenProp,
   NavigationState,
-  StackActions,
 } from 'react-navigation';
 // @ts-ignore
 import Logo from '~/assets/logo-money-huge.png';
-import { clientLogin } from '~/services/Auth';
-import { isInitialized } from '~/services/Welcome';
+import {clientLogin} from '~/services/Auth';
 import colors from '~/styles/colors';
 import styles from './styles';
 
@@ -26,7 +23,7 @@ interface SignInProps {
 }
 
 const SignIn = (props: SignInProps) => {
-  const { navigation } = props;
+  const {navigation} = props;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,7 +36,7 @@ const SignIn = (props: SignInProps) => {
         email,
         password,
       };
-      const { loginSuccess } = await clientLogin(data);
+      const {loginSuccess} = await clientLogin(data);
       if (loginSuccess) {
         navigation.navigate('Loading');
       } else {
@@ -61,7 +58,7 @@ const SignIn = (props: SignInProps) => {
           autoCapitalize="none"
           autoCorrect={false}
           value={email}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={text => setEmail(text)}
         />
         <TextInput
           style={styles.input}
@@ -71,23 +68,21 @@ const SignIn = (props: SignInProps) => {
           autoCapitalize="none"
           autoCorrect={false}
           value={password}
-          onChangeText={(text) => setPassword(text)}
+          onChangeText={text => setPassword(text)}
         />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           disabled={loading ? true : false}
           onPress={onSubmit}
-          style={styles.signInButton}
-        >
+          style={styles.signInButton}>
           <Text style={styles.signInTextButton}>
             {loading ? 'Carregando' : 'Entrar'}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('SignUp')}
-          style={styles.signUpButton}
-        >
+          style={styles.signUpButton}>
           <Text style={styles.signUpTextButton}>Criar uma conta</Text>
         </TouchableOpacity>
       </View>

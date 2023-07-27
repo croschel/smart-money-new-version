@@ -1,9 +1,8 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
-// eslint-disable-next-line import/no-unresolved
-import { API_KEY } from '@env';
+import {GEO_API_KEY} from '@env';
 import ButtonIcon from '~/components/Core/ButtonIcon';
 
 type OnChengeArgs = {
@@ -14,15 +13,15 @@ type OnChengeArgs = {
 
 interface NewEntryGeoPickerProps {
   address: string;
-  onChange: ({ latitude, longitude, address }: OnChengeArgs) => void;
+  onChange: ({latitude, longitude, address}: OnChengeArgs) => void;
 }
 
-const NewEntryGeoPicker = ({ address, onChange }: NewEntryGeoPickerProps) => {
+const NewEntryGeoPicker = ({address, onChange}: NewEntryGeoPickerProps) => {
   const getLocation = (latitude: number, longitude: number) => {
-    // remember to isolate api_key on env before push this branch
-    Geocoder.init(API_KEY);
-    Geocoder.from({ latitude, longitude })
-      .then((json) => {
+    // remember to isolate GEO_API_KEY on env before push this branch
+    Geocoder.init(GEO_API_KEY);
+    Geocoder.from({latitude, longitude})
+      .then(json => {
         const formattedAdress = json.results[0].formatted_address;
         Alert.alert('Localização', formattedAdress, [
           {
@@ -42,26 +41,26 @@ const NewEntryGeoPicker = ({ address, onChange }: NewEntryGeoPickerProps) => {
           },
         ]);
       })
-      .catch((error) => {
+      .catch(error => {
         console.warn('NewEntryGeoPicker :: Location was not found', error);
         Alert.alert(
-          'Houve um erro ao recuperar sua posição, favor verificar a autorização para uso de sua localização.'
+          'Houve um erro ao recuperar sua posição, favor verificar a autorização para uso de sua localização.',
         );
       });
   };
 
   const getPosition = () => {
     Geolocation.getCurrentPosition(
-      (pos) => {
-        const { latitude, longitude } = pos.coords;
+      pos => {
+        const {latitude, longitude} = pos.coords;
         getLocation(latitude, longitude);
       },
-      (error) => {
+      error => {
         console.error('NewEntryGeoPicker :: Position was not found', error);
         Alert.alert(
-          'Houve um erro ao recuperar sua posição, favor verificar a autorização para uso de sua localização.'
+          'Houve um erro ao recuperar sua posição, favor verificar a autorização para uso de sua localização.',
         );
-      }
+      },
     );
   };
 
@@ -71,7 +70,7 @@ const NewEntryGeoPicker = ({ address, onChange }: NewEntryGeoPickerProps) => {
         {
           text: 'Apagar',
           onPress: () => {
-            onChange({ latitude: null, longitude: null, address: '' });
+            onChange({latitude: null, longitude: null, address: ''});
           },
         },
         {

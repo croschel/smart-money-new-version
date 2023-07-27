@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import { styles } from './styles';
+import {View, Image} from 'react-native';
+import {styles} from './styles';
 import WelcomeMessage from './WelcomeMessage';
 // @ts-ignore
 import Logo from '~/assets/logo-money-huge.png';
@@ -19,7 +19,7 @@ interface WelcomeProps {
 }
 
 const Welcome = (props: WelcomeProps) => {
-  const { navigation } = props;
+  const {navigation} = props;
 
   const onPressNext = () => {
     navigation.navigate('InitBalance');
