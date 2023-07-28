@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Modal, Alert, ImageBackground, View} from 'react-native';
-import {RNCamera, RNCameraProps} from 'react-native-camera';
+import {RNCamera} from 'react-native-camera';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import colors from '~/styles/colors';
@@ -20,7 +20,7 @@ const ModalCameraPicker = ({
   onClose,
   isVisible,
 }: ModalCameraPickerProps) => {
-  const [camera, setCamera] = useState();
+  const [camera, setCamera] = useState<any>();
 
   const onTakePicture = async () => {
     try {
