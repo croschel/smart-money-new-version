@@ -3,15 +3,15 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import {Alert} from 'react-native';
 
-interface signUpData {
+interface AuthData {
   email: string;
   password: string;
+}
+
+interface signUpData extends AuthData {
   name: string;
 }
-interface signInData {
-  email: string;
-  password: string;
-}
+interface signInData extends AuthData {}
 
 export const isLogged = async () => {
   const userStatus = await getUserAuth();
