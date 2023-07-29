@@ -2,7 +2,11 @@ import React from 'react';
 import Svg, {Circle} from 'react-native-svg';
 import colors from '~/styles/colors';
 
-const ballWithoutLine = props => {
+interface Props {
+  color?: string;
+}
+
+const ballWithoutLine = (props: Props) => {
   const {color} = props;
 
   return (
