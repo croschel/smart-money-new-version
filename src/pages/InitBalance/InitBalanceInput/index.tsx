@@ -16,6 +16,7 @@ const InitBalanceInput = ({amount, onChangeValue}: InitBalanceInputProps) => {
         value={amount}
         startWithDebt={false}
         onChangeValue={onChangeValue}
+        onChangeDebit={() => {}}
       />
     </View>
   );

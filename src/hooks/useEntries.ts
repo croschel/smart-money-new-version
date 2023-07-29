@@ -16,7 +16,6 @@ const useEntries = (days = 7, category?: CategoryObject) => {
         const data = await getEntries(days, category);
         setEntries(data);
       }
-      // @ts-ignore
     }
     loadEntries();
   }, [days, category]);
