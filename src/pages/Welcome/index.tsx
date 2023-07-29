@@ -2,23 +2,16 @@ import React from 'react';
 import {View, Image} from 'react-native';
 import {styles} from './styles';
 import WelcomeMessage from './WelcomeMessage';
-// @ts-ignore
 import Logo from '~/assets/logo-money-huge.png';
 import {
   ActionFooter,
   ActionPrimaryButton,
 } from '~/components/Core/ActionFooter';
-import {
-  NavigationParams,
-  NavigationScreenProp,
-  NavigationState,
-} from 'react-navigation';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-interface WelcomeProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
+type Props = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
 
-const Welcome = (props: WelcomeProps) => {
+const Welcome = (props: Props) => {
   const {navigation} = props;
 
   const onPressNext = () => {

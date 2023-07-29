@@ -1,18 +1,17 @@
-/* eslint-disable no-unused-expressions */
-import React, { useState } from 'react';
-import { SafeAreaView, TouchableOpacity, Text } from 'react-native';
-import { TextInputMask } from 'react-native-masked-text';
-import { styles } from './styles';
+import React, {useState} from 'react';
+import {SafeAreaView, TouchableOpacity, Text} from 'react-native';
+import {TextInputMask} from 'react-native-masked-text';
+import {styles} from './styles';
 
 interface InputMoneyProps {
   value: string;
   onChangeValue: (res: number) => void;
+  onChangeDebit: (res: boolean) => void;
   startWithDebt?: boolean;
-  onChangeDebit?: (res: boolean) => void;
 }
 
 const InputMoney = (props: InputMoneyProps) => {
-  const { value, onChangeValue, startWithDebt = true, onChangeDebit } = props;
+  const {value, onChangeValue, startWithDebt = true, onChangeDebit} = props;
   const floatValue = parseFloat(value);
 
   const setDefaultDebit = () => {
@@ -54,8 +53,7 @@ const InputMoney = (props: InputMoneyProps) => {
       <TouchableOpacity
         disabled={!startWithDebt}
         onPress={handleChangeDebit}
-        style={styles.debitButton}
-      >
+        style={styles.debitButton}>
         <Text style={styles.debitButtonPrefix}>{debitPrefix}</Text>
         <Text style={styles.debitButtonUnit}>R$</Text>
       </TouchableOpacity>
@@ -65,8 +63,8 @@ const InputMoney = (props: InputMoneyProps) => {
         options={optionsInput}
         value={value}
         includeRawValueInChangeText
-        onChangeText={(maskedValue: string, rawValue: string) => {
-          onChangeValue(parseFloat(rawValue) * debit);
+        onChangeText={(maskedValue: string, rawValue?: string) => {
+          onChangeValue(parseFloat(rawValue ?? '0') * debit);
         }}
       />
     </SafeAreaView>

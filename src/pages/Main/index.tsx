@@ -17,24 +17,29 @@ import EntryList from '~/components/EntryList';
 import styles from './styles';
 import LogoutButton from '~/components/LogoutButton';
 import {cleanUserAuth} from '~/services/Auth';
-import {NavigationStackScreenProps} from 'react-navigation-stack';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-const Main = ({navigation}: NavigationStackScreenProps) => {
+type Props = NativeStackScreenProps<RootStackParamList, 'Main'>;
+
+const Main = ({navigation}: Props) => {
   const handleLogout = async () => {
     await cleanUserAuth();
-    navigation.navigate('Sign');
+    navigation.navigate('SignIn');
   };
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <BalancePanel onNewEntryPress={() => navigation.navigate('NewEntry')} />
+        <BalancePanel
+          // @ts-ignore
+          onNewEntryPress={() => navigation.navigate('NewEntry', undefined)}
+        />
         <ScrollView>
           <EntrySummary
             onPressActionButton={() => navigation.navigate('Report')}
           />
           <EntryList
             days={7}
-            onEntryPress={entry => navigation.navigate('NewEntry', {entry})}
+            onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
             onPressActionButton={() => navigation.navigate('Report')}
           />
         </ScrollView>

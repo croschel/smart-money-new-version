@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {NavigationActions, StackActions} from 'react-navigation';
 import BalanceLabel from '~/components/BalanceLabel';
 import NewEntryInput from './NewEntryInput';
 import NewEntryCategory from './NewEntryCategory';
@@ -15,35 +14,24 @@ import {
 } from '~/components/Core/ActionFooter';
 import useEntries from '~/hooks/useEntries';
 import styles from './styles';
-import {NavigationStackScreenProps} from 'react-navigation-stack';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {EntryObject} from '../../../declarations';
 
-const NewEntry = ({navigation}: NavigationStackScreenProps) => {
-  const [, saveEntry, updateEntry, deleteEntry] = useEntries();
+type Props = NativeStackScreenProps<RootStackParamList, 'NewEntry'>;
 
-  const entry = navigation.getParam('entry', {
-    id: null,
-    amount: 0.0,
-    entryAt: new Date(),
-    photo: null,
-    address: null,
-    latitude: null,
-    longitude: null,
-    category: {
-      id: null,
-      name: 'Selecione',
-    },
-  });
+const NewEntry = ({navigation, route}: Props) => {
+  const entry = route.params;
+  const {saveEntry, updateEntry, deleteEntry} = useEntries();
+
   const isEdit = entry.id !== null;
-  const [debit, setDebit] = useState(entry.amount <= 0);
-  const [amount, setAmount] = useState(
-    `${parseFloat(entry.amount).toFixed(2)}`,
-  );
+  const [debit, setDebit] = useState<boolean>(entry.amount <= 0);
+  const [amount, setAmount] = useState<string>(`${entry.amount.toFixed(2)}`);
   const [category, setCategory] = useState(entry.category);
   const [entryAt, setEntryAt] = useState(
     isEdit ? entry.entryAt.toDate() : entry.entryAt,
   );
-  const [addressState, setAddressState] = useState(entry.address);
-  const [photo, setPhoto] = useState(entry.photo);
+  const [addressState, setAddressState] = useState(entry.address ?? '');
+  const [photo, setPhoto] = useState(entry.photo ?? '');
   const [latitudeState, setLatitudeState] = useState(entry.latitude);
   const [longitudeState, setLongitudeState] = useState(entry.longitude);
 
@@ -55,16 +43,14 @@ const NewEntry = ({navigation}: NavigationStackScreenProps) => {
   };
 
   const onClose = () => {
-    navigation.dispatch(
-      StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({routeName: 'Main'})],
-      }),
-    );
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Main'}],
+    });
   };
 
   const onSave = async () => {
-    const value = {
+    const value: EntryObject = {
       amount: parseFloat(amount),
       address: addressState,
       latitude: latitudeState,
@@ -72,9 +58,10 @@ const NewEntry = ({navigation}: NavigationStackScreenProps) => {
       category,
       entryAt,
       photo,
+      isInit: false,
     };
     if (isEdit) {
-      await updateEntry(value, entry.id);
+      await updateEntry(value, entry.id ?? '');
     } else {
       await saveEntry(value);
     }
@@ -91,8 +78,8 @@ const NewEntry = ({navigation}: NavigationStackScreenProps) => {
       <View style={styles.formContainer}>
         <NewEntryInput
           value={amount}
-          onChangeValue={value => setAmount(value)}
-          onChangeDebit={setDebit}
+          onChangeValue={(value: number) => setAmount(String(value))}
+          onChangeDebit={(value: boolean) => setDebit(value)}
         />
         <NewEntryCategory
           debit={debit}
@@ -110,7 +97,10 @@ const NewEntry = ({navigation}: NavigationStackScreenProps) => {
               setAddressState(address);
             }}
           />
-          <NewEntryCameraPicker photo={photo} onChangePhoto={setPhoto} />
+          <NewEntryCameraPicker
+            photo={photo}
+            onChangePhoto={(value: string) => setPhoto(value)}
+          />
         </View>
       </View>
       <View>

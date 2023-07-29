@@ -1,32 +1,29 @@
 import React, {useEffect} from 'react';
 import {View, ActivityIndicator} from 'react-native';
-import {NavigationActions, StackActions} from 'react-navigation';
-import {NavigationStackScreenProps} from 'react-navigation-stack';
 import {isInitialized} from '~/services/Welcome';
 import colors from '~/styles/colors';
 
 import {styles} from './styles';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-const Loading = ({navigation}: NavigationStackScreenProps) => {
+type Props = NativeStackScreenProps<RootStackParamList, 'Loading'>;
+
+const Loading = ({navigation}: Props) => {
   useEffect(() => {
     async function makeRedirect() {
       const isInitialLlogin = await isInitialized();
       // console.log('AsyncStorage isInitialized :: ', isInitialLlogin);
 
       if (isInitialLlogin === true) {
-        navigation.dispatch(
-          StackActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({routeName: 'Main'})],
-          }),
-        );
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'Main'}],
+        });
       } else {
-        navigation.dispatch(
-          StackActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({routeName: 'Welcome'})],
-          }),
-        );
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'Welcome'}],
+        });
       }
     }
     makeRedirect();

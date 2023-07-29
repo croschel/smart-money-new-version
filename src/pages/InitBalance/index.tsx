@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View, Image} from 'react-native';
-import {NavigationActions, StackActions} from 'react-navigation';
 import {styles} from './styles';
 import InitBalanceInput from './InitBalanceInput';
 import Logo from '~/assets/logo-money.png';
@@ -11,25 +10,26 @@ import {
 import {saveEntry} from '~/services/Entries';
 import useCategories from '~/hooks/useCategories';
 import {setInitialized} from '~/services/Welcome';
-import {NavigationStackScreenProps} from 'react-navigation-stack';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-const InitBalance = ({navigation}: NavigationStackScreenProps) => {
+type Props = NativeStackScreenProps<RootStackParamList, 'InitBalance'>;
+
+const InitBalance = ({navigation}: Props) => {
   const [amount, setAmount] = useState(0);
   const [, , , initCategories] = useCategories();
 
   const onSavePress = () => {
     saveEntry({
       amount,
+      // @ts-ignore TODO - TS
       category: initCategories,
       isInit: true,
     });
     setInitialized();
-    navigation.dispatch(
-      StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({routeName: 'Main'})],
-      }),
-    );
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Main'}],
+    });
   };
 
   return (

@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, {ReactNode} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './styles';
@@ -34,8 +34,7 @@ const Container = (props: ContainerProps) => {
           {actionButtonText && (
             <TouchableOpacity
               style={styles.actionButton}
-              onPress={onPressActionButton}
-            >
+              onPress={onPressActionButton}>
               <Icon name="insert-chart" style={styles.actionButtonIcon} />
               <Text style={styles.actionButtonText}>{actionButtonText}</Text>
             </TouchableOpacity>

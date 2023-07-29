@@ -8,13 +8,18 @@ import {CategoryObject, EntryObject} from '~/../declarations';
 
 interface EntryListItemProps {
   onEntryPress: (entry: EntryObject) => void;
-  onPressActionButton: () => void;
   days: number;
   category?: CategoryObject;
+  onPressActionButton?: () => void;
 }
 
 const EntryList = (props: EntryListItemProps) => {
-  const {onEntryPress, onPressActionButton, days = 7, category} = props;
+  const {
+    onEntryPress,
+    onPressActionButton = () => {},
+    days = 7,
+    category,
+  } = props;
   // @ts-ignore TS-TODO
   const [entries, , ,] = useEntries(days, category);
 

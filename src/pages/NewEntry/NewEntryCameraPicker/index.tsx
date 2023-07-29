@@ -5,7 +5,7 @@ import ModalCameraPicker from './ModalCameraPicker';
 
 interface NewEntryCameraPickerProps {
   photo: string;
-  onChangePhoto: (photo: string | null) => void;
+  onChangePhoto: (photo: string) => void;
 }
 
 const NewEntryCameraPicker = ({
@@ -18,13 +18,13 @@ const NewEntryCameraPicker = ({
     setShowModal(false);
   };
 
-  const onChangePhotoPress = (newPhoto: null | string) => {
+  const onChangePhotoPress = (newPhoto: string) => {
     onChangePhoto(newPhoto);
     onCloseModal();
   };
 
   const onDeletePicture = () => {
-    onChangePhoto(null);
+    onChangePhoto('');
     onCloseModal();
   };
   return (

@@ -5,7 +5,7 @@ import {styles} from './styles';
 
 interface InitBalanceInputProps {
   amount: string;
-  onChangeValue: () => void;
+  onChangeValue: (value: number) => void;
 }
 
 const InitBalanceInput = ({amount, onChangeValue}: InitBalanceInputProps) => {

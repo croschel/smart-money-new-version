@@ -19,13 +19,16 @@ import {
 import colors from '~/styles/colors';
 import styles from './styles';
 import {formatSingleNumber} from '~/util';
-import {NavigationStackScreenProps} from 'react-navigation-stack';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {CategoryObject} from '../../../declarations';
 
-const Report = ({navigation}: NavigationStackScreenProps) => {
+type Props = NativeStackScreenProps<RootStackParamList, 'Report'>;
+
+const Report = ({navigation}: Props) => {
   const [showRelativeDaysModal, setShowRelativeDaysModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [relativeDays, setRelativeDays] = useState(7);
-  const [category, setCategory] = useState({
+  const [category, setCategory] = useState<CategoryObject>({
     id: null,
     name: 'Todas as Categorias',
   });
@@ -34,12 +37,7 @@ const Report = ({navigation}: NavigationStackScreenProps) => {
     setShowCategoryModal(false);
   };
 
-  type ItemForCategory = {
-    id: null | string;
-    name: null | string;
-  };
-
-  const onSelectCategory = (item: ItemForCategory) => {
+  const onSelectCategory = (item: CategoryObject) => {
     setCategory(item);
     onCategoryCloseModal();
   };
@@ -48,8 +46,8 @@ const Report = ({navigation}: NavigationStackScreenProps) => {
     setShowRelativeDaysModal(false);
   };
 
-  const onRelativeDaysPress = (item: ItemForCategory) => {
-    setRelativeDays(item);
+  const onRelativeDaysPress = (days: number) => {
+    setRelativeDays(days);
     onRelativeDaysClose();
   };
   return (
@@ -69,7 +67,7 @@ const Report = ({navigation}: NavigationStackScreenProps) => {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => setShowCategoryModal()}
+          onPress={() => setShowCategoryModal(true)}
           style={styles.filterButton}>
           <Text style={styles.filterButtonText}>{category.name}</Text>
           <Icon
@@ -87,12 +85,14 @@ const Report = ({navigation}: NavigationStackScreenProps) => {
           modalVisible={showCategoryModal}
           onSelectCategory={onSelectCategory}
           onClose={onCategoryCloseModal}
+          debit={false}
+          filter={false}
         />
       </View>
       <ScrollView>
         <EntrySummary days={relativeDays} />
         <EntryList
-          onEntryPress={entry => navigation.navigate('NewEntry', {entry})}
+          onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
           days={relativeDays}
           category={category}
         />

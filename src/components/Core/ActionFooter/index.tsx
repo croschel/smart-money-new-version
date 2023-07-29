@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, {ReactNode} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
 
@@ -18,7 +18,7 @@ interface ActionSecondaryButtonProps {
 }
 
 export const ActionFooter = (props: ActionFooterProps) => {
-  const { children } = props;
+  const {children} = props;
   return (
     <View style={styles.container}>
       <View style={styles.inner}>{children}</View>
@@ -27,7 +27,7 @@ export const ActionFooter = (props: ActionFooterProps) => {
 };
 
 export const ActionPrimaryButton = (props: ActionPrimaryButtonProps) => {
-  const { title, onPress, size = 'small' } = props;
+  const {title, onPress, size = 'small'} = props;
 
   const handleSize = () => {
     let fontSize = 18;
@@ -48,7 +48,7 @@ export const ActionPrimaryButton = (props: ActionPrimaryButtonProps) => {
 
   return (
     <TouchableOpacity style={styles.primaryButton} onPress={onPress}>
-      <Text style={[styles.primaryButtonText, { fontSize: handleSize() }]}>
+      <Text style={[styles.primaryButtonText, {fontSize: handleSize()}]}>
         {title}
       </Text>
     </TouchableOpacity>
@@ -56,7 +56,7 @@ export const ActionPrimaryButton = (props: ActionPrimaryButtonProps) => {
 };
 
 export const ActionSecondaryButton = (props: ActionSecondaryButtonProps) => {
-  const { title, onPress } = props;
+  const {title, onPress} = props;
 
   return (
     <TouchableOpacity style={styles.secondaryButton} onPress={onPress}>

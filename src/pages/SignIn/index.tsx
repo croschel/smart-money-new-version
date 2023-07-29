@@ -7,22 +7,15 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {
-  NavigationParams,
-  NavigationScreenProp,
-  NavigationState,
-} from 'react-navigation';
-// @ts-ignore
 import Logo from '~/assets/logo-money-huge.png';
 import {clientLogin} from '~/services/Auth';
 import colors from '~/styles/colors';
 import styles from './styles';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-interface SignInProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
+type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
-const SignIn = (props: SignInProps) => {
+const SignIn = (props: Props) => {
   const {navigation} = props;
 
   const [email, setEmail] = useState('');

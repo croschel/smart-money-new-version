@@ -7,24 +7,15 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {
-  NavigationActions,
-  NavigationScreenProp,
-  NavigationStackAction,
-  StackActions,
-} from 'react-navigation';
-import {NavigationStackState} from 'react-navigation-stack/lib/typescript/src/vendor/types';
-// @ts-ignore
 import Logo from '~/assets/logo-money-huge.png';
 import {clientRegister} from '~/services/Auth';
 import colors from '~/styles/colors';
 import styles from './styles';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-interface SignUpProps {
-  navigation: NavigationScreenProp<NavigationStackAction, NavigationStackState>;
-}
+type Props = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
-const SignUp = (props: SignUpProps) => {
+const SignUp = (props: Props) => {
   const {navigation} = props;
 
   const [email, setEmail] = useState('');
@@ -42,12 +33,10 @@ const SignUp = (props: SignUpProps) => {
       };
       const {registerSuccess} = await clientRegister(data);
       if (registerSuccess) {
-        navigation.dispatch(
-          StackActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({routeName: 'SignIn'})],
-          }),
-        );
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'SignIn'}],
+        });
       } else {
         setLoading(false);
       }

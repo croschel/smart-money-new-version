@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import colors from '~/styles/colors';
 
 export default StyleSheet.create({
@@ -36,5 +36,5 @@ export default StyleSheet.create({
   actionButtonText: {
     fontSize: 12,
     color: colors.white,
-  }
-})
+  },
+});

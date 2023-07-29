@@ -5,15 +5,15 @@ import Geocoder from 'react-native-geocoding';
 import {GEO_API_KEY} from '@env';
 import ButtonIcon from '~/components/Core/ButtonIcon';
 
-type OnChengeArgs = {
-  latitude: number | null;
-  longitude: number | null;
+type OnChangeArgs = {
+  latitude: number | undefined;
+  longitude: number | undefined;
   address: string;
 };
 
 interface NewEntryGeoPickerProps {
   address: string;
-  onChange: ({latitude, longitude, address}: OnChengeArgs) => void;
+  onChange: ({latitude, longitude, address}: OnChangeArgs) => void;
 }
 
 const NewEntryGeoPicker = ({address, onChange}: NewEntryGeoPickerProps) => {
@@ -35,7 +35,7 @@ const NewEntryGeoPicker = ({address, onChange}: NewEntryGeoPickerProps) => {
               onChange({
                 latitude,
                 longitude,
-                address: formattedAdress,
+                address: formattedAdress ?? '',
               });
             },
           },
@@ -70,7 +70,7 @@ const NewEntryGeoPicker = ({address, onChange}: NewEntryGeoPickerProps) => {
         {
           text: 'Apagar',
           onPress: () => {
-            onChange({latitude: null, longitude: null, address: ''});
+            onChange({latitude: undefined, longitude: undefined, address: ''});
           },
         },
         {

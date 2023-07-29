@@ -17,7 +17,7 @@ export interface EntryObject {
 }
 
 export interface CategoryObject {
-  id: string;
+  id: string | null;
   name: string;
   color?: string;
   isInit?: boolean;

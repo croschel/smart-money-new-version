@@ -1,8 +1,8 @@
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
-import { getSubDays } from '~/util';
-import { CategoryObject, EntryObject } from '~/../declarations';
-import { getUserAuth } from './Auth';
+import {getSubDays} from '~/util';
+import {CategoryObject, EntryObject} from '~/../declarations';
+import {getUserAuth} from './Auth';
 
 export const getEntries = async (days: number, category: CategoryObject) => {
   let querySnapshot;
@@ -24,14 +24,14 @@ export const getEntries = async (days: number, category: CategoryObject) => {
       .get();
   }
 
-  let entries = querySnapshot.docs.map((documentSnapshot) => {
-    return { ...documentSnapshot.data(), id: documentSnapshot.id };
+  let entries = querySnapshot.docs.map(documentSnapshot => {
+    return {...documentSnapshot.data(), id: documentSnapshot.id};
   });
   if (category && category.id) {
     // console.log('getEntries :: category ', JSON.stringify(category));
     entries = entries.filter(
       //@ts-ignore
-      (entry: EntryObject) => entry.category.id === category.id
+      (entry: EntryObject) => entry.category.id === category.id,
     );
   }
 
@@ -87,7 +87,7 @@ export const updateEntry = async (entry: EntryObject, id: string) => {
     console.log('updateEntry :: data: ', JSON.stringify(data));
   } catch (error) {
     console.error(
-      `updateEntry :: error on save object: ${JSON.stringify(data)}`
+      `updateEntry :: error on save object: ${JSON.stringify(data)}`,
     );
     Alert.alert('Erro ao salvar os dados de lançamento');
   }
@@ -99,7 +99,7 @@ export const deleteEntry = async (entry: EntryObject) => {
     await firestore().collection('entries').doc(entry.id).delete();
   } catch (error) {
     console.error(
-      `deleteEntry :: error on delte object: ${JSON.stringify(error)}`
+      `deleteEntry :: error on delte object: ${JSON.stringify(error)}`,
     );
     Alert.alert('Erro ao deletar os dados de lançamento');
   }
