@@ -1,9 +1,9 @@
 import React from 'react';
-import Svg, { Rect, Circle } from 'react-native-svg';
+import Svg, {Rect, Circle} from 'react-native-svg';
 import colors from '~/styles/colors';
 
-const ball = (props) => {
-  const { isFirstItem = true, isLastItem = true, color } = props;
+const ball = props => {
+  const {isFirstItem = true, isLastItem = true, color} = props;
   const bulletLineY = isFirstItem ? 25 : 0;
   const bulletLineHeight = isLastItem ? 25 : 50;
   const showBulletLine = !(isFirstItem && isLastItem);
