@@ -24,7 +24,7 @@ type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export const Routes = (isLogged: boolean) => {
+export default (isLogged: boolean) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
