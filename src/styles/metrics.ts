@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
 const metrics = {
   width: Math.round(Dimensions.get('window').width),
