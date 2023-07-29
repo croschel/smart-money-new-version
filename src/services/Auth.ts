@@ -1,7 +1,7 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
 
 interface signUpData {
   email: string;
@@ -33,32 +33,33 @@ export const cleanUserAuth = async () => {
 };
 
 export const clientRegister = async (data: signUpData) => {
-  const { email, password, name } = data;
+  const {email, password, name} = data;
   try {
     const userInfo = await auth().createUserWithEmailAndPassword(
       email,
-      password
+      password,
     );
-    const { uid } = userInfo.user;
+    const {uid} = userInfo.user;
     await firestore().collection('users').doc(uid).set({
       name,
     });
-    return { registerSuccess: true };
+    return {registerSuccess: true};
   } catch (error) {
-    Alert.alert('Erro ao criar um usuário!', error.message);
-    return { registerSucess: false };
+    Alert.alert('Erro ao criar um usuário!');
+    console.log({error});
+    return {registerSucess: false};
   }
 };
 
 export const clientLogin = async (data: signInData) => {
-  const { email, password } = data;
+  const {email, password} = data;
   try {
     const userInfo = await auth().signInWithEmailAndPassword(email, password);
-    const { uid } = userInfo.user;
+    const {uid} = userInfo.user;
     setUserAuth(uid);
-    return { loginSuccess: true };
+    return {loginSuccess: true};
   } catch (error) {
     Alert.alert('Login ou senha incorretos');
-    return { loginSuccess: false };
+    return {loginSuccess: false};
   }
 };
