@@ -11,7 +11,7 @@ interface InputMoneyProps {
 }
 
 const InputMoney = (props: InputMoneyProps) => {
-  const {value, onChangeValue, startWithDebt = true, onChangeDebit} = props;
+  const {value, onChangeValue, startWithDebt = false, onChangeDebit} = props;
   const floatValue = parseFloat(value);
 
   const setDefaultDebit = () => {

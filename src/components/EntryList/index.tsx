@@ -20,8 +20,7 @@ const EntryList = (props: EntryListItemProps) => {
     days = 7,
     category,
   } = props;
-  // @ts-ignore TS-TODO
-  const [entries, , ,] = useEntries(days, category);
+  const {entries} = useEntries(days, category);
 
   const checkBallFirstPosition = (index: number) => {
     if (index === 0) {

@@ -24,7 +24,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Main'>;
 const Main = ({navigation}: Props) => {
   const handleLogout = async () => {
     await cleanUserAuth();
-    navigation.navigate('SignIn');
+    // navigation.navigate('SignIn');
   };
   return (
     <>

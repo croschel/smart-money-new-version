@@ -4,10 +4,9 @@ import {getUserAuth} from './Auth';
 export const isInitialized = async () => {
   let openningBalance = false;
   const uid = await getUserAuth();
-  if (uid) {
+  if (uid !== null) {
     const userInfo = await firestore().collection('users').doc(uid).get();
-    // @ts-ignore
-    openningBalance = userInfo.data().openningBalance;
+    openningBalance = userInfo.data()?.openningBalance;
   }
 
   return openningBalance !== null && openningBalance === true;
