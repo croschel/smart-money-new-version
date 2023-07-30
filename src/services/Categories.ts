@@ -6,8 +6,8 @@ export const getAllCategories = async () => {
     .orderBy('order')
     .get();
 
-  const categories = querySnapshot.docs.map((documentSnapshot) => {
-    return { ...documentSnapshot.data(), id: documentSnapshot.id };
+  const categories = querySnapshot.docs.map(documentSnapshot => {
+    return {...documentSnapshot.data(), id: documentSnapshot.id};
   });
 
   return categories;
@@ -21,8 +21,8 @@ export const getDebitCategories = async () => {
     .orderBy('order')
     .get();
 
-  const categories = querySnapshot.docs.map((documentSnapshot) => {
-    return { ...documentSnapshot.data(), id: documentSnapshot.id };
+  const categories = querySnapshot.docs.map(documentSnapshot => {
+    return {...documentSnapshot.data(), id: documentSnapshot.id};
   });
 
   return categories;
@@ -36,8 +36,8 @@ export const getCreditCategories = async () => {
     .orderBy('order')
     .get();
 
-  const categories = querySnapshot.docs.map((documentSnapshot) => {
-    return { ...documentSnapshot.data(), id: documentSnapshot.id };
+  const categories = querySnapshot.docs.map(documentSnapshot => {
+    return {...documentSnapshot.data(), id: documentSnapshot.id};
   });
 
   return categories;
@@ -49,5 +49,5 @@ export const getInitCategories = async () => {
     .where('isInit', '==', true)
     .get();
 
-  return { ...querySnapshot.docs[0].data(), id: querySnapshot.docs[0].id };
+  return {...querySnapshot.docs[0].data(), id: querySnapshot.docs[0].id};
 };

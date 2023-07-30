@@ -66,10 +66,7 @@ export const getBalanceSumByDate = async (days: number) => {
   return entries;
 };
 
-export const getBalanceSumByCategory = async (
-  days: number,
-  showOther = true,
-) => {
+export const getBalanceSumByCategory = async (days: number) => {
   let querySnapshot;
   const uid = await getUserAuth();
 
