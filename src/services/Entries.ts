@@ -47,17 +47,16 @@ export const saveEntry = async (entry: EntryObject) => {
       userId: uid,
       description: entry.category.name,
       amount: entry.amount,
-      address: entry.address,
-      latitude: entry.latitude,
-      longitude: entry.longitude,
+      address: entry.address ?? null,
+      latitude: entry.latitude ?? null,
+      longitude: entry.longitude ?? null,
       entryAt: entry.entryAt || new Date(),
-      photo: entry.photo,
+      photo: entry.photo ?? null,
       category: entry.category,
       isInit: entry.isInit || false,
     };
+    // console.log('addEntry :: data: ', data);
     await firestore().collection('entries').add(data);
-
-    console.log('addEntry :: data: ', JSON.stringify(data));
   } catch (error) {
     console.error(`addEntry :: error on save object: ${JSON.stringify(data)}`);
     Alert.alert('Erro ao salvar os dados de lançamento');
