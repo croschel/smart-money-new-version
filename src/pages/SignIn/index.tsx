@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   KeyboardAvoidingView,
   View,
@@ -12,10 +12,12 @@ import {clientLogin} from '~/services/Auth';
 import colors from '~/styles/colors';
 import styles from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {AuthContext} from '~/contexts/auth';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
 const SignIn = (props: Props) => {
+  const {signUser} = useContext(AuthContext);
   const {navigation} = props;
 
   const [email, setEmail] = useState('');
@@ -31,7 +33,7 @@ const SignIn = (props: Props) => {
       };
       const {loginSuccess} = await clientLogin(data);
       if (loginSuccess) {
-        navigation.navigate('Loading');
+        signUser();
       } else {
         setLoading(false);
       }

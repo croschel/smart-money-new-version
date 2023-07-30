@@ -9,8 +9,8 @@
   levantar em determinado espaço de tempo
 */
 
-import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import React, {useContext} from 'react';
+import {SafeAreaView} from 'react-native';
 import BalancePanel from '~/components/BalancePanel';
 import EntrySummary from '~/components/EntrySummary';
 import EntryList from '~/components/EntryList';
@@ -18,13 +18,15 @@ import styles from './styles';
 import LogoutButton from '~/components/LogoutButton';
 import {cleanUserAuth} from '~/services/Auth';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {AuthContext} from '~/contexts/auth';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Main'>;
 
 const Main = ({navigation}: Props) => {
+  const {logoutUser} = useContext(AuthContext);
   const handleLogout = async () => {
     await cleanUserAuth();
-    // navigation.navigate('SignIn');
+    logoutUser();
   };
   return (
     <>
@@ -33,16 +35,14 @@ const Main = ({navigation}: Props) => {
           // @ts-ignore
           onNewEntryPress={() => navigation.navigate('NewEntry', undefined)}
         />
-        <ScrollView>
-          <EntrySummary
-            onPressActionButton={() => navigation.navigate('Report')}
-          />
-          <EntryList
-            days={7}
-            onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
-            onPressActionButton={() => navigation.navigate('Report')}
-          />
-        </ScrollView>
+        <EntrySummary
+          onPressActionButton={() => navigation.navigate('Report')}
+        />
+        <EntryList
+          days={7}
+          onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
+          onPressActionButton={() => navigation.navigate('Report')}
+        />
       </SafeAreaView>
       <LogoutButton position="topRight" onPress={handleLogout} />
     </>

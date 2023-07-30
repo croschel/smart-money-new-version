@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import {Routes} from '~/routes';
 import colors from '~/styles/colors';
+import {AuthProvider} from './contexts/auth';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,9 @@ const App = () => {
         barStyle="light-content"
         translucent={false}
       />
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </SafeAreaView>
   );
 };

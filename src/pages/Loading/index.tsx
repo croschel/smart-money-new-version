@@ -12,7 +12,6 @@ const Loading = ({navigation}: Props) => {
   useEffect(() => {
     async function makeRedirect() {
       const isInitialLlogin = await isInitialized();
-      // console.log('AsyncStorage isInitialized :: ', isInitialLlogin);
 
       if (isInitialLlogin === true) {
         navigation.reset({

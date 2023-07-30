@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {
-  SafeAreaView,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
 import BalanceLabel from '~/components/BalanceLabel';
 import EntrySummary from '~/components/EntrySummary';
 import EntryList from '~/components/EntryList';
@@ -89,14 +83,12 @@ const Report = ({navigation}: Props) => {
           filter={false}
         />
       </View>
-      <ScrollView>
-        <EntrySummary days={relativeDays} />
-        <EntryList
-          onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
-          days={relativeDays}
-          category={category}
-        />
-      </ScrollView>
+      <EntrySummary days={relativeDays} />
+      <EntryList
+        onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
+        days={relativeDays}
+        category={category}
+      />
       <View>
         <ActionFooter>
           <ActionPrimaryButton

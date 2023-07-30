@@ -19,8 +19,7 @@ export const isLogged = async () => {
 };
 
 export const setUserAuth = async (uid: string) => {
-  const useruid = await AsyncStorage.setItem('userAuth', uid);
-  console.log('UserUID :: ', useruid);
+  await AsyncStorage.setItem('userAuth', uid);
 };
 
 export const getUserAuth = async () => {
