@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Main from './pages/Main';
@@ -10,6 +10,7 @@ import InitBalance from './pages/InitBalance';
 import Loading from './pages/Loading';
 import Welcome from './pages/Welcome';
 import {EntryObject} from '../declarations';
+import {isLogged} from './services/Auth';
 
 type RootStackParamList = {
   SignIn: undefined;
@@ -24,11 +25,20 @@ type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export default (isLogged: boolean) => {
+export const Routes = () => {
+  const [userLogged, setUserLogged] = useState(false);
+  useEffect(() => {
+    const checkLogin = async () => {
+      const response = await isLogged();
+      setUserLogged(response);
+    };
+
+    checkLogin();
+  }, []);
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {isLogged ? (
+        {userLogged ? (
           // Logged Screens
           <Stack.Group screenOptions={{headerShown: false}}>
             <Stack.Screen name="Loading" component={Loading} />

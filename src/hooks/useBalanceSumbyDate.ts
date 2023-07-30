@@ -8,7 +8,7 @@ const useBalanceSumByDate = (days = 7) => {
   useEffect(() => {
     async function loadBalanceSumByDate() {
       const data = await getBalanceSumByDate(days);
-
+      // @ts-ignore TODO-TS
       setBalanceSum([...data]);
     }
     loadBalanceSumByDate();

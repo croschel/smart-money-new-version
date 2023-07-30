@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {CategoryObject, EntryObject} from '~/../declarations';
+import {CategoryObject} from '~/../declarations';
 import {
   getEntries,
   saveEntry,
@@ -8,7 +8,7 @@ import {
 } from '~/services/Entries';
 
 const useEntries = (days = 7, category?: CategoryObject) => {
-  const [entries, setEntries] = useState<EntryObject[]>([]);
+  const [entries, setEntries] = useState<{id: string}[]>([]);
 
   useEffect(() => {
     async function loadEntries() {

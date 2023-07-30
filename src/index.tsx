@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import CreateRoute from '~/routes';
+import React from 'react';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import {Routes} from '~/routes';
 import colors from '~/styles/colors';
-import { isLogged } from './services/Auth';
-import { isInitialized } from './services/Welcome';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,19 +10,6 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
-  const [userLogged, setUserLogged] = useState(false);
-  useEffect(() => {
-    const checkLogin = async () => {
-      const response = await isLogged();
-      setUserLogged(response);
-    };
-
-    checkLogin();
-  }, []);
-
-  // @ts-ignore
-  const Routes = CreateRoute(userLogged);
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar

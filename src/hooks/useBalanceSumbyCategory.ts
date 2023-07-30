@@ -14,7 +14,7 @@ const useBalanceSumByCategory = (days = 7) => {
   useEffect(() => {
     async function loadBalanceSumByCategory() {
       const data = await getBalanceSumByCategory(days);
-
+      // @ts-ignore TODO-TS
       setBalanceSum([...data]);
     }
     loadBalanceSumByCategory();
