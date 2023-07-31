@@ -16,20 +16,37 @@ import useEntries from '~/hooks/useEntries';
 import styles from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {EntryObject} from '../../../declarations';
+import {RootStackParamList} from '~/@types/routes';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'NewEntry'>;
 
 const NewEntry = ({navigation, route}: Props) => {
-  const entry = route.params;
+  const {params} = route;
+  const entry: EntryObject =
+    params !== undefined
+      ? params
+      : {
+          id: null,
+          amount: 0.0,
+          description: null,
+          entryAt: null,
+          photo: null,
+          address: null,
+          latitude: null,
+          longitude: null,
+          isInit: false,
+          category: {
+            id: null,
+            name: 'Selecione',
+          },
+        };
   const {saveEntry, updateEntry, deleteEntry} = useEntries();
-
+  console.log({entry});
   const isEdit = entry.id !== null;
   const [debit, setDebit] = useState<boolean>(entry.amount <= 0);
   const [amount, setAmount] = useState<string>(`${entry.amount.toFixed(2)}`);
   const [category, setCategory] = useState(entry.category);
-  const [entryAt, setEntryAt] = useState(
-    isEdit ? entry.entryAt.toDate() : entry.entryAt,
-  );
+  const [entryAt, setEntryAt] = useState(entry.entryAt);
   const [addressState, setAddressState] = useState(entry.address ?? '');
   const [photo, setPhoto] = useState(entry.photo ?? '');
   const [latitudeState, setLatitudeState] = useState(entry.latitude);
@@ -51,6 +68,8 @@ const NewEntry = ({navigation, route}: Props) => {
 
   const onSave = async () => {
     const value: EntryObject = {
+      id: entry.id,
+      description: entry.description,
       amount: parseFloat(amount),
       address: addressState,
       latitude: latitudeState,
@@ -87,13 +106,16 @@ const NewEntry = ({navigation, route}: Props) => {
           onChangeCategory={setCategory}
         />
         <View style={styles.formActionContainer}>
-          <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+          <NewEntryDatePicker
+            value={entryAt ?? new Date()}
+            onChange={setEntryAt}
+          />
           <NewEntryDeleteAction onOkPress={onDelete} entry={entry} />
           <NewEntryGeoPicker
             address={addressState}
             onChange={({latitude, longitude, address}) => {
-              setLatitudeState(latitude);
-              setLongitudeState(longitude);
+              setLatitudeState(latitude ?? null);
+              setLongitudeState(longitude ?? null);
               setAddressState(address);
             }}
           />

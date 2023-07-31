@@ -1,3 +1,5 @@
+import {EntryObject} from '../../declarations';
+
 type RootStackParamList = {
   SignIn: undefined;
   SignUp: undefined;
@@ -6,16 +8,5 @@ type RootStackParamList = {
   InitBalance: undefined;
   Main: undefined;
   Report: undefined;
-  NewEntry: {
-    id?: string;
-    amount: number;
-    description?: string;
-    entryAt?: FirebaseFirestoreTypes.Timestamp;
-    latitude?: number;
-    longitude?: number;
-    address?: string;
-    photo?: string;
-    isInit: boolean;
-    category: CategoryObject;
-  };
+  NewEntry: EntryObject | undefined;
 };

@@ -1,10 +1,11 @@
+import {FirebaseFirestoreTypes} from '@react-native-firebase/firestore';
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import ButtonIcon from '~/components/Core/ButtonIcon';
 
 interface NewEntryDatePickerProps {
-  value: Date;
+  value: FirebaseFirestoreTypes.Timestamp | Date;
   onChange: (data: Date) => void;
 }
 
@@ -28,7 +29,7 @@ const NewEntryDatePicker = ({value, onChange}: NewEntryDatePickerProps) => {
         // titleIOS="Data de vencimento"
         cancelTextIOS="Cancelar"
         confirmTextIOS="Ok"
-        date={value}
+        date={value as Date}
         isVisible={modalVisible}
         onConfirm={onChangeValue}
         onCancel={onCancel}

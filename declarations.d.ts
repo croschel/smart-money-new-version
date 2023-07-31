@@ -4,14 +4,14 @@ declare module 'react-native-vector-icons/MaterialIcons';
 declare module '*.png';
 
 export interface EntryObject {
-  id?: string;
+  id: string | null;
   amount: number;
-  description?: string;
-  entryAt?: FirebaseFirestoreTypes.Timestamp;
-  latitude?: number;
-  longitude?: number;
-  address?: string;
-  photo?: string;
+  description: string | null;
+  entryAt: FirebaseFirestoreTypes.Timestamp | Date | null;
+  latitude: number | null;
+  longitude: number | null;
+  address: string | null;
+  photo: string | null;
   isInit: boolean;
   category: CategoryObject;
 }

@@ -9,19 +9,8 @@ import Report from './pages/Report';
 import InitBalance from './pages/InitBalance';
 import Loading from './pages/Loading';
 import Welcome from './pages/Welcome';
-import {EntryObject} from '../declarations';
 import {AuthContext} from './contexts/auth';
-
-type RootStackParamList = {
-  SignIn: undefined;
-  SignUp: undefined;
-  Loading: undefined;
-  Welcome: undefined;
-  InitBalance: undefined;
-  Main: undefined;
-  Report: undefined;
-  NewEntry: EntryObject | undefined;
-};
+import {RootStackParamList} from './@types/routes';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
