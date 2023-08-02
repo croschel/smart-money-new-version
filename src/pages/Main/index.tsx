@@ -42,6 +42,10 @@ const Main = ({navigation}: Props) => {
           />
           <EntryList
             days={7}
+            category={{
+              id: null,
+              name: 'Todas as Categorias',
+            }}
             onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
             onPressActionButton={() => navigation.navigate('Report')}
           />
