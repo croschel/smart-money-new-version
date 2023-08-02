@@ -6,7 +6,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 8,
+    paddingHorizontal: 0,
     paddingVertical: 16,
+    overflow: 'hidden',
   },
 });

@@ -10,7 +10,7 @@
 */
 
 import React, {useContext} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView, ScrollView} from 'react-native';
 import BalancePanel from '~/components/BalancePanel';
 import EntrySummary from '~/components/EntrySummary';
 import EntryList from '~/components/EntryList';
@@ -36,7 +36,7 @@ const Main = ({navigation}: Props) => {
           // @ts-ignore
           onNewEntryPress={() => navigation.navigate('NewEntry', undefined)}
         />
-        <View>
+        <ScrollView>
           <EntrySummary
             onPressActionButton={() => navigation.navigate('Report')}
           />
@@ -45,7 +45,7 @@ const Main = ({navigation}: Props) => {
             onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
             onPressActionButton={() => navigation.navigate('Report')}
           />
-        </View>
+        </ScrollView>
       </SafeAreaView>
       <LogoutButton position="topRight" onPress={handleLogout} />
     </>

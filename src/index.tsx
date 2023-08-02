@@ -4,6 +4,22 @@ import {Routes} from '~/routes';
 import colors from '~/styles/colors';
 import {AuthProvider} from './contexts/auth';
 
+if (__DEV__) {
+  const ignoreWarns = [
+    'VirtualizedLists should never be nested inside plain ScrollViews',
+  ];
+
+  const errorWarn = global.console.error;
+  global.console.error = (...arg) => {
+    for (const error of ignoreWarns) {
+      if (arg[0].startsWith(error)) {
+        return;
+      }
+    }
+    errorWarn(...arg);
+  };
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
