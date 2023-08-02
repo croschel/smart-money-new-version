@@ -36,7 +36,7 @@ const Main = ({navigation}: Props) => {
           // @ts-ignore
           onNewEntryPress={() => navigation.navigate('NewEntry', undefined)}
         />
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
           <EntrySummary
             onPressActionButton={() => navigation.navigate('Report')}
           />

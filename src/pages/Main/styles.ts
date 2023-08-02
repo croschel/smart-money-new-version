@@ -8,4 +8,7 @@ export default StyleSheet.create({
   },
   label: {},
   value: {},
+  scrollView: {
+    elevation: -1,
+  },
 });
