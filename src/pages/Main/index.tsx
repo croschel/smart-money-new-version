@@ -10,7 +10,7 @@
 */
 
 import React, {useContext} from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import BalancePanel from '~/components/BalancePanel';
 import EntrySummary from '~/components/EntrySummary';
 import EntryList from '~/components/EntryList';
@@ -19,6 +19,7 @@ import LogoutButton from '~/components/LogoutButton';
 import {cleanUserAuth} from '~/services/Auth';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {AuthContext} from '~/contexts/auth';
+import {RootStackParamList} from '~/@types/routes';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Main'>;
 
@@ -35,14 +36,16 @@ const Main = ({navigation}: Props) => {
           // @ts-ignore
           onNewEntryPress={() => navigation.navigate('NewEntry', undefined)}
         />
-        <EntrySummary
-          onPressActionButton={() => navigation.navigate('Report')}
-        />
-        <EntryList
-          days={7}
-          onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
-          onPressActionButton={() => navigation.navigate('Report')}
-        />
+        <View>
+          <EntrySummary
+            onPressActionButton={() => navigation.navigate('Report')}
+          />
+          <EntryList
+            days={7}
+            onEntryPress={entry => navigation.navigate('NewEntry', {...entry})}
+            onPressActionButton={() => navigation.navigate('Report')}
+          />
+        </View>
       </SafeAreaView>
       <LogoutButton position="topRight" onPress={handleLogout} />
     </>

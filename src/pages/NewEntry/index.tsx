@@ -41,7 +41,6 @@ const NewEntry = ({navigation, route}: Props) => {
           },
         };
   const {saveEntry, updateEntry, deleteEntry} = useEntries();
-  console.log({entry});
   const isEdit = entry.id !== null;
   const [debit, setDebit] = useState<boolean>(entry.amount <= 0);
   const [amount, setAmount] = useState<string>(`${entry.amount.toFixed(2)}`);
@@ -97,7 +96,7 @@ const NewEntry = ({navigation, route}: Props) => {
       <View style={styles.formContainer}>
         <NewEntryInput
           value={amount}
-          onChangeValue={(value: number) => setAmount(String(value))}
+          onChangeValue={(value: string) => setAmount(value)}
           onChangeDebit={(value: boolean) => setDebit(value)}
         />
         <NewEntryCategory

@@ -11,6 +11,7 @@ import {saveEntry} from '~/services/Entries';
 import useCategories from '~/hooks/useCategories';
 import {setInitialized} from '~/services/Welcome';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '~/@types/routes';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'InitBalance'>;
 

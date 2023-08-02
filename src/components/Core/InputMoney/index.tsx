@@ -29,13 +29,6 @@ const InputMoney = (props: InputMoneyProps) => {
 
   const [debit, setDebit] = useState(setDefaultDebit);
   const [debitPrefix, setDebitPrefix] = useState(setDefaultPrefix);
-  const optionsInput = {
-    precision: 2,
-    separator: ',',
-    delimiter: '.',
-    unit: '',
-    suffixUnit: '',
-  };
   const handleChangeDebit = () => {
     if (debit < 0) {
       setDebit(1);
@@ -60,11 +53,18 @@ const InputMoney = (props: InputMoneyProps) => {
       <TextInputMask
         style={styles.input}
         type="money"
-        options={optionsInput}
+        options={{
+          precision: 2,
+          separator: ',',
+          delimiter: '.',
+          unit: ' ',
+          suffixUnit: '',
+        }}
         value={value}
         includeRawValueInChangeText
-        onChangeText={(maskedValue: string, rawValue?: string) => {
-          onChangeValue(parseFloat(rawValue ?? '0') * debit);
+        onChangeText={(text: string, rawValue?: string) => {
+          const floatResult = parseFloat(rawValue ?? '0') * debit;
+          onChangeValue(floatResult);
         }}
       />
     </SafeAreaView>
