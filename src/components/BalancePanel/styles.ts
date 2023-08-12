@@ -19,5 +19,6 @@ export default StyleSheet.create({
     marginTop: -25,
     marginRight: 10,
     shadowColor: colors.black,
+    elevation: 5,
   },
 });

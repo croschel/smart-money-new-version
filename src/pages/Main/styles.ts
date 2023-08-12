@@ -9,6 +9,6 @@ export default StyleSheet.create({
   label: {},
   value: {},
   scrollView: {
-    elevation: -1,
+    zIndex: -1,
   },
 });
