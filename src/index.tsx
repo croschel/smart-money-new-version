@@ -7,6 +7,7 @@ import {AuthProvider} from './contexts/auth';
 if (__DEV__) {
   const ignoreWarns = [
     'VirtualizedLists should never be nested inside plain ScrollViews',
+    'ViewPropTypes will be removed from React Native',
   ];
 
   const errorWarn = global.console.error;
