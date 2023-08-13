@@ -12,7 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1C50FC7C2A7578B9009BFD28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C50FC7B2A7578B9009BFD28 /* GoogleService-Info.plist */; };
-		1C965A452A70BB920063BB2E /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1C965A442A70BB920063BB2E /* Fonts */; };
+		1C6C58242A89316800EE16F1 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6C58112A89316800EE16F1 /* MaterialIcons.ttf */; };
 		815F1172B6283EAFB0E8EA7B /* Pods_NewSmartMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF85523DFE99B496383130EB /* Pods_NewSmartMoney.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		84D2A1AAE1518AF84BEC5CDF /* Pods_NewSmartMoney_NewSmartMoneyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F5A07F651B1524ABF95EB /* Pods_NewSmartMoney_NewSmartMoneyTests.framework */; };
@@ -39,7 +39,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = NewSmartMoney/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NewSmartMoney/main.m; sourceTree = "<group>"; };
 		1C50FC7B2A7578B9009BFD28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1C965A442A70BB920063BB2E /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
+		1C6C58112A89316800EE16F1 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-NewSmartMoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSmartMoney.debug.xcconfig"; path = "Target Support Files/Pods-NewSmartMoney/Pods-NewSmartMoney.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-NewSmartMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSmartMoney.release.xcconfig"; path = "Target Support Files/Pods-NewSmartMoney/Pods-NewSmartMoney.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-NewSmartMoney-NewSmartMoneyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSmartMoney-NewSmartMoneyTests.debug.xcconfig"; path = "Target Support Files/Pods-NewSmartMoney-NewSmartMoneyTests/Pods-NewSmartMoney-NewSmartMoneyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		13B07FAE1A68108700A75B9A /* NewSmartMoney */ = {
 			isa = PBXGroup;
 			children = (
-				1C965A442A70BB920063BB2E /* Fonts */,
+				1C6C57FE2A89316800EE16F1 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -100,6 +100,15 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = NewSmartMoney;
+			sourceTree = "<group>";
+		};
+		1C6C57FE2A89316800EE16F1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1C6C58112A89316800EE16F1 /* MaterialIcons.ttf */,
+			);
+			name = Fonts;
+			path = ../../Fonts;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -247,8 +256,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C965A452A70BB920063BB2E /* Fonts in Resources */,
 				1C50FC7C2A7578B9009BFD28 /* GoogleService-Info.plist in Resources */,
+				1C6C58242A89316800EE16F1 /* MaterialIcons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
